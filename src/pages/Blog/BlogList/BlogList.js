@@ -89,7 +89,7 @@ const BlogList = () => {
                                 </Link>
                               </NavItem>
                               <NavItem>
-                                <Link to="/blog-grid" className="nav-link">
+                                <Link to="/blog-game" className="nav-link">
                                   <i className="mdi mdi-view-grid-outline"></i>
                                 </Link>
                               </NavItem>
@@ -102,7 +102,7 @@ const BlogList = () => {
 
                       <div>
                         <h5>
-                          <Link to="/blog-details" className="text-dark">
+                          <Link to="/game-news" className="text-dark">
                             Beautiful Day with Friends
                           </Link>
                         </h5>
@@ -143,7 +143,7 @@ const BlogList = () => {
 
                       <div>
                         <h5>
-                          <Link to="/blog-details" className="text-dark">
+                          <Link to="/game-news" className="text-dark">
                             Project discussion with team
                           </Link>
                         </h5>
@@ -258,7 +258,7 @@ const BlogList = () => {
 
                       <div className="list-group list-group-flush">
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium me-1"></i>{" "}
@@ -266,7 +266,7 @@ const BlogList = () => {
                         </Link>
 
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium me-1"></i> Drawing
@@ -274,7 +274,7 @@ const BlogList = () => {
                         </Link>
 
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium me-1"></i> Project
@@ -298,7 +298,7 @@ const BlogList = () => {
 
                       <div className="list-group list-group-flush">
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium me-1"></i> Coffee
@@ -306,7 +306,7 @@ const BlogList = () => {
                         </Link>
 
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium me-1"></i> Neque
@@ -314,7 +314,7 @@ const BlogList = () => {
                         </Link>
 
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium me-1"></i> Quis
@@ -322,7 +322,7 @@ const BlogList = () => {
                         </Link>
 
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium me-1"></i> Cras mi
@@ -330,7 +330,7 @@ const BlogList = () => {
                         </Link>
 
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium me-1"></i> Drawing
@@ -338,7 +338,7 @@ const BlogList = () => {
                         </Link>
 
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium me-1"></i> Project
@@ -362,7 +362,7 @@ const BlogList = () => {
 
                       <div className="list-group list-group-flush">
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium me-1"></i>{" "}
@@ -370,7 +370,7 @@ const BlogList = () => {
                         </Link>
 
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium me-1"></i> Drawing
@@ -378,7 +378,7 @@ const BlogList = () => {
                         </Link>
 
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium me-1"></i> Project

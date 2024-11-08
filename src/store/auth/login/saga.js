@@ -38,7 +38,7 @@ function* loginUser({ payload: { user, history } }) {
       localStorage.setItem("authUser", JSON.stringify(response));
       yield put(loginSuccess(response));
     }
-    history('/dashboard');
+    history('/blog-game');
   } catch (error) {
     yield put(apiError(error));
   }
@@ -64,7 +64,7 @@ function* socialLogin({ payload: { type, history } }) {
       const fireBaseBackend = getFirebaseBackend();
       const response = yield call(fireBaseBackend.socialLoginUser, type);
       if (response) {
-        history("/dashboard");
+        history("/blog-game");
       } else {
         history("/login");
       }
@@ -72,7 +72,7 @@ function* socialLogin({ payload: { type, history } }) {
       yield put(loginSuccess(response));
     }
     if(response)
-    history("/dashboard");
+    history("/blog-game");
   } catch (error) {
     console.log("error",error)
     yield put(apiError(error));

@@ -204,7 +204,7 @@ const authProtectedRoutes = [
   { path: "/ecommerce-product-detail/:id", component: <EcommerceProductDetail /> },
   { path: "/ecommerce-products", component: <EcommerceProducts /> },
   { path: "/ecommerce-orders", component: <EcommerceOrders /> },
-  { path: "/ecommerce-customers", component: <EcommerceCustomers /> },
+  { path: "/leaderboards", component: <EcommerceCustomers /> },
   { path: "/ecommerce-cart", component: <EcommerceCart /> },
   { path: "/ecommerce-checkout", component: <EcommerceCheckout /> },
   { path: "/ecommerce-shops", component: <EcommerceShops /> },
@@ -228,7 +228,7 @@ const authProtectedRoutes = [
   { path: "/tasks-kanban", component: <TasksKanban />},
 
   //Projects
-  { path: "/projects-grid", component: <ProjectsGrid /> },
+  { path: "/tournaments", component: <ProjectsGrid /> },
   { path: "/projects-list", component: <ProjectsList /> },
   { path: "/projects-overview", component: <ProjectsOverview /> },
   { path: "/projects-overview/:id", component: <ProjectsOverview /> },
@@ -236,8 +236,8 @@ const authProtectedRoutes = [
 
   //Blog
   { path: "/blog-list", component: <BlogList /> },
-  { path: "/blog-grid", component: <BlogGrid /> },
-  { path: "/blog-details/:appid", component: <BlogDetails /> },
+  { path: "/blog-game", component: <BlogGrid /> },
+  { path: "/game-news/:appid", component: <BlogDetails /> },
   { path: "/add-tournament", component: <AddTournament /> },
   { path: "/tournament-details/:tournamentId", component: <TournamentDetails /> },
   

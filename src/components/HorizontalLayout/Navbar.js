@@ -366,7 +366,7 @@ const Navbar = props => {
                           {props.t("Orders")}
                         </Link>
                         <Link
-                          to="/ecommerce-customers"
+                          to="/leaderboards"
                           className="dropdown-item"
                         >
                           {props.t("Customers")}
@@ -446,7 +446,7 @@ const Navbar = props => {
                           show: project,
                         })}
                       >
-                        <Link to="/projects-grid" className="dropdown-item">
+                        <Link to="/tournaments" className="dropdown-item">
                           {props.t("Projects Grid")}
                         </Link>
                         <Link to="/projects-list" className="dropdown-item">
@@ -531,10 +531,10 @@ const Navbar = props => {
                         <Link to="/blog-list" className="dropdown-item">
                           {props.t("Blog List")}
                         </Link>
-                        <Link to="/blog-grid" className="dropdown-item">
+                        <Link to="/blog-game" className="dropdown-item">
                           {props.t("Blog Grid")}
                         </Link>
-                        <Link to="/blog-details" className="dropdown-item">
+                        <Link to="/game-news" className="dropdown-item">
                           {props.t("Blog Details")}
                         </Link>
                       </div>

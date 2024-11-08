@@ -78,7 +78,7 @@ const CreateTournament = () => {
         const data = await response.json();
         setSuccessMessage("Tournament created successfully!");
         setTimeout(() => {
-          navigate(`/projects-grid`);
+          navigate(`/tournaments`);
         }, 2000);
       } else {
         alert("Failed to create tournament.");

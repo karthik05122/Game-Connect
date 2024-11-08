@@ -175,21 +175,21 @@ const SidebarContent = props => {
             <li className="menu-title">{props.t("Apps")}</li>
 
             <li>
-              <Link to="/blog-grid" >
+              <Link to="/blog-game" >
                 <i className="bx bx-news"></i>
                 <span>{props.t("Game News")}</span>
               </Link>
             </li>
 
             <li>
-              <Link to="/projects-grid" >
+              <Link to="/tournaments" >
                 <i className="bx bx-joystick"></i>
                 <span>{props.t("eSports Hub")}</span>
               </Link>
             </li>
 
             <li>
-              <Link to="/ecommerce-customers" >
+              <Link to="/leaderboards" >
                 <i className="bx bx-trophy"></i>
                 <span>{props.t("Explore")}</span>
               </Link>
@@ -234,7 +234,7 @@ const SidebarContent = props => {
                   <Link to="/ecommerce-orders">{props.t("Orders")}</Link>
                 </li>
                 <li>
-                  <Link to="/ecommerce-customers">{props.t("Customers")}</Link>
+                  <Link to="/leaderboards">{props.t("Customers")}</Link>
                 </li>
                 <li>
                   <Link to="/ecommerce-cart">{props.t("Cart")}</Link>
@@ -344,7 +344,7 @@ const SidebarContent = props => {
               </Link>
               <ul className="sub-menu">
                 <li>
-                  <Link to="/projects-grid">{props.t("Projects Grid")}</Link>
+                  <Link to="/tournaments">{props.t("Projects Grid")}</Link>
                 </li>
                 <li>
                   <Link to="/projects-list">{props.t("Projects List")}</Link>
@@ -407,10 +407,10 @@ const SidebarContent = props => {
                   <Link to="/blog-list">{props.t("Blog List")}</Link>
                 </li>
                 <li>
-                  <Link to="/blog-grid">{props.t("Blog Grid")}</Link>
+                  <Link to="/blog-game">{props.t("Blog Grid")}</Link>
                 </li>
                 <li>
-                  <Link to="/blog-details">{props.t("Blog Details")}</Link>
+                  <Link to="/game-news">{props.t("Blog Details")}</Link>
                 </li>
               </ul>
             </li>

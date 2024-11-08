@@ -57,7 +57,7 @@ const BlogGrid = () => {
         { name: "Mac OS", icon: <MacOSIcon /> },
         { name: "Linux", icon: <LinuxIcon /> },
       ],
-      detailsLink: "/blog-details/570",
+      detailsLink: "/game-news/570",
       appid: 570,
     },
     {
@@ -69,7 +69,7 @@ const BlogGrid = () => {
         { name: "Mac OS", icon: <MacOSIcon /> },
         { name: "Linux", icon: <LinuxIcon /> },
       ],
-      detailsLink: "/blog-details/730",
+      detailsLink: "/game-news/730",
       appid: 730,
     },
     {
@@ -81,7 +81,7 @@ const BlogGrid = () => {
         { name: "Mac OS", icon: <MacOSIcon /> },
         { name: "Linux", icon: <LinuxIcon /> },
       ],
-      detailsLink: "/blog-details/578080",
+      detailsLink: "/game-news/578080",
       appid: 578080,
     },
     {
@@ -93,7 +93,7 @@ const BlogGrid = () => {
         { name: "Mac OS", icon: <MacOSIcon /> },
         { name: "Linux", icon: <LinuxIcon /> },
       ],
-      detailsLink: "/blog-details/1203220",
+      detailsLink: "/game-news/1203220",
       appid: 1203220,
     },
     {
@@ -105,7 +105,7 @@ const BlogGrid = () => {
         { name: "Mac OS", icon: <MacOSIcon /> },
         { name: "Linux", icon: <LinuxIcon /> },
       ],
-      detailsLink: "/blog-details/440",
+      detailsLink: "/game-news/440",
       appid: 440,
     },
     {
@@ -117,7 +117,7 @@ const BlogGrid = () => {
         { name: "Mac OS", icon: <MacOSIcon /> },
         { name: "Linux", icon: <LinuxIcon /> },
       ],
-      detailsLink: "/blog-details/1172470",
+      detailsLink: "/game-news/1172470",
       appid: 1172470,
     },
     {
@@ -129,7 +129,7 @@ const BlogGrid = () => {
         { name: "Mac OS", icon: <MacOSIcon /> },
         { name: "Linux", icon: <LinuxIcon /> },
       ],
-      detailsLink: "/blog-details/2923300",
+      detailsLink: "/game-news/2923300",
       appid: 2923300,
     },
     {
@@ -141,7 +141,7 @@ const BlogGrid = () => {
         { name: "Mac OS", icon: <MacOSIcon /> },
         { name: "Linux", icon: <LinuxIcon /> },
       ],
-      detailsLink: "/blog-details/2429640",
+      detailsLink: "/game-news/2429640",
       appid: 2429640,
     },
   ];

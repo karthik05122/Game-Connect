@@ -88,7 +88,7 @@ const BlogGrid = () => {
                               </NavItem>
                               <NavItem>
                                 <Link
-                                  to="/blog-grid"
+                                  to="/blog-game"
                                   className="nav-link active"
                                 >
                                   <i className="mdi mdi-view-grid-outline"></i>
@@ -106,7 +106,7 @@ const BlogGrid = () => {
                           <Card className="p-1 border shadow-none">
                             <div className="p-3">
                               <h5>
-                                <Link to="/blog-details" className="text-dark">
+                                <Link to="/game-news" className="text-dark">
                                   Beautiful Day with Friends
                                 </Link>
                               </h5>
@@ -155,7 +155,7 @@ const BlogGrid = () => {
                           <Card className="p-1 border shadow-none">
                             <div className="p-3">
                               <h5>
-                                <Link to="/blog-details" className="text-dark">
+                                <Link to="/game-news" className="text-dark">
                                   Drawing a sketch
                                 </Link>
                               </h5>
@@ -217,7 +217,7 @@ const BlogGrid = () => {
                           <Card className="p-1 border shadow-none">
                             <div className="p-3">
                               <h5>
-                                <Link to="/blog-details" className="text-dark">
+                                <Link to="/game-news" className="text-dark">
                                   Riding bike on road
                                 </Link>
                               </h5>
@@ -266,7 +266,7 @@ const BlogGrid = () => {
                           <Card className="p-1 border shadow-none">
                             <div className="p-3">
                               <h5>
-                                <Link to="/blog-details" className="text-dark">
+                                <Link to="/game-news" className="text-dark">
                                   Project discussion with team
                                 </Link>
                               </h5>
@@ -381,7 +381,7 @@ const BlogGrid = () => {
 
                       <div className="list-group list-group-flush">
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium ms-1"></i>{" "}
@@ -389,7 +389,7 @@ const BlogGrid = () => {
                         </Link>
 
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium ms-1"></i> Drawing
@@ -397,7 +397,7 @@ const BlogGrid = () => {
                         </Link>
 
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium ms-1"></i> Project
@@ -421,7 +421,7 @@ const BlogGrid = () => {
 
                       <div className="list-group list-group-flush">
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium ms-1"></i> Coffee
@@ -429,7 +429,7 @@ const BlogGrid = () => {
                         </Link>
 
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium ms-1"></i> Neque
@@ -437,7 +437,7 @@ const BlogGrid = () => {
                         </Link>
 
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium ms-1"></i> Quis
@@ -445,7 +445,7 @@ const BlogGrid = () => {
                         </Link>
 
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium ms-1"></i> Cras mi
@@ -453,7 +453,7 @@ const BlogGrid = () => {
                         </Link>
 
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium ms-1"></i> Drawing
@@ -461,7 +461,7 @@ const BlogGrid = () => {
                         </Link>
 
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium ms-1"></i> Project
@@ -485,7 +485,7 @@ const BlogGrid = () => {
 
                       <div className="list-group list-group-flush">
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium ms-1"></i>{" "}
@@ -493,7 +493,7 @@ const BlogGrid = () => {
                         </Link>
 
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium ms-1"></i> Drawing
@@ -501,7 +501,7 @@ const BlogGrid = () => {
                         </Link>
 
                         <Link
-                          to="/blog-details"
+                          to="/game-news"
                           className="list-group-item text-muted"
                         >
                           <i className="mdi mdi-circle-medium ms-1"></i> Project
