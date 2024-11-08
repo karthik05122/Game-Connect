@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { Container, Row } from 'reactstrap';
 
 // Import Breadcrumb
@@ -80,7 +80,9 @@ const TournamentDetails = () => {
             <div className="page-content">
                 <Container fluid>
                     <Breadcrumbs title="Tournament" breadcrumbItem="Tournament Details" />
-
+                    <Link to="/tournaments" className="btn btn-primary">
+                        Back
+                    </Link>
                     <Row>
                         <Overview tournament={tournament} />
                         <DetailsSection tournament={tournament} />

@@ -26,14 +26,14 @@ const BlogDetails = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-         `https://thingproxy.freeboard.io/fetch/http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002?appid=${appid}`
+          `https://thingproxy.freeboard.io/fetch/http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002?appid=${appid}`
         );
         const data = await response.json();
         const newsItems = data?.appnews?.newsitems;
 
         if (newsItems && newsItems.length > 0) {
           // Find the first item with an image
-          const validNewsItem = newsItems.find((item) => 
+          const validNewsItem = newsItems.find((item) =>
             item.contents && item.contents.match(/\[img\](.*?)\[\/img\]/)
           );
 
@@ -68,6 +68,9 @@ const BlogDetails = () => {
       <div className="page-content">
         <Container fluid>
           <Breadcrumbs title="Game" breadcrumbItem="Game News" />
+          <Link to="/blog-game" className="btn btn-primary">
+            Back
+          </Link>
           <Row>
             <Col lg={12}>
               <Card>
@@ -135,9 +138,9 @@ const BlogDetails = () => {
                                 src={
                                   newsItem.contents.match(/\[img\](.*?)\[\/img\]/)
                                     ? newsItem.contents.match(/\[img\](.*?)\[\/img\]/)[1].replace(
-                                        "{STEAM_CLAN_IMAGE}",
-                                        "https://clan.akamai.steamstatic.com/images"
-                                      )
+                                      "{STEAM_CLAN_IMAGE}",
+                                      "https://clan.akamai.steamstatic.com/images"
+                                    )
                                     : "fallback-image-url.jpg" // Replace with a fallback image URL if needed
                                 }
                                 alt="Blog Visual"
