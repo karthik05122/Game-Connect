@@ -67,7 +67,7 @@ const authProtectedRoutes = [
   { path: "/profile", component: <UserProfile /> },
 
   //Ecommerce
-  { path: "/ecommerce-product-detail/:id", component: <EcommerceProductDetail /> },
+  { path: "/player-detail/:username", component: <EcommerceProductDetail /> },
   { path: "/ecommerce-products", component: <EcommerceProducts /> },
   { path: "/ecommerce-orders", component: <EcommerceOrders /> },
   { path: "/leaderboards", component: <EcommerceCustomers /> },
