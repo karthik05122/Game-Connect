@@ -26,10 +26,11 @@ const BlogDetails = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://thingproxy.freeboard.io/fetch/http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002?appid=${appid}`
+          `https://api.allorigins.win/get?url=http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002?appid=${appid}`
         );
         const data = await response.json();
-        const newsItems = data?.appnews?.newsitems;
+        const parsedData = JSON.parse(data.contents);
+        const newsItems = parsedData?.appnews?.newsitems;
 
         if (newsItems && newsItems.length > 0) {
           // Find the first item with an image

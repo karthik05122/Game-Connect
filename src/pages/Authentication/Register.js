@@ -1,75 +1,48 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { Row, Col, CardBody, Card, Alert, Container, Input, Label, Form, FormFeedback } from "reactstrap";
-
-// Formik Validation
 import * as Yup from "yup";
 import { useFormik } from "formik";
-
-// action
-import { registerUser, apiError } from "../../store/actions";
-
-//redux
-import { useSelector, useDispatch } from "react-redux";
-import { createSelector } from "reselect";
-
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
-// import images
+// Import images
 import profileImg from "../../assets/images/profile-img.png";
 import logoImg from "../../assets/images/logo.svg";
 
-const Register = props => {
-
-  //meta title
-  document.title = "Register | Skote - React Admin & Dashboard Template";
-
-  const dispatch = useDispatch();
+const Register = () => {
+  const [apiError, setApiError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
 
   const validation = useFormik({
-    // enableReinitialize : use this flag when initial values needs to be changed
-    enableReinitialize: true,
-
     initialValues: {
-      email: '',
-      username: '',
-      password: '',
+      firstName: "",
+      middleName: "",
+      lastName: "",
+      email: "",
+      mobile: "",
+      password: "",
     },
     validationSchema: Yup.object({
-      email: Yup.string().required("Please Enter Your Email"),
-      username: Yup.string().required("Please Enter Your Username"),
-      password: Yup.string().required("Please Enter Your Password"),
+      firstName: Yup.string().required("Please Enter Your First Name"),
+      middleName: Yup.string().required("Please Enter Your Middle Name"),
+      lastName: Yup.string().required("Please Enter Your Last Name"),
+      email: Yup.string().email("Invalid email format").required("Please Enter Your Email"),
+      mobile: Yup.string().required("Please Enter Your Mobile Number"),
+      password: Yup.string().min(6, "Password must be at least 6 characters").required("Please Enter Your Password"),
     }),
-    onSubmit: (values) => {
-      dispatch(registerUser(values));
-    }
+    onSubmit: async (values) => {
+      try {
+        const response = await axios.post("https://app.cirtkenya.com/api/v1/auth/signup", values);
+        setSuccessMessage("Registration successful! Redirecting to login...");
+        setApiError("");
+        setTimeout(() => navigate("/login"), 2000);
+      } catch (error) {
+        setApiError(error.response?.data?.message || "Registration failed. Please try again.");
+        setSuccessMessage("");
+      }
+    },
   });
-
-
-  const selectAccountState = (state) => state.Account;
-  const AccountProperties = createSelector(
-    selectAccountState,
-    (account) => ({
-      user: account.user,
-      registrationError: account.registrationError,
-      success: account.success
-      // loading: account.loading,
-    })
-  );
-
-  const {
-    user,
-    registrationError, success
-    // loading
-  } = useSelector(AccountProperties);
-
-  useEffect(() => {
-    dispatch(apiError(""));
-  }, []);
-
-useEffect(() => {
-  success && setTimeout(() => navigate("/login"), 2000)
-}, [success])
 
   return (
     <React.Fragment>
@@ -101,12 +74,7 @@ useEffect(() => {
                     <Link to="/">
                       <div className="avatar-md profile-user-wid mb-4">
                         <span className="avatar-title rounded-circle bg-light">
-                          <img
-                            src={logoImg}
-                            alt=""
-                            className="rounded-circle"
-                            height="34"
-                          />
+                          <img src={logoImg} alt="" className="rounded-circle" height="34" />
                         </span>
                       </div>
                     </Link>
@@ -120,87 +88,115 @@ useEffect(() => {
                         return false;
                       }}
                     >
-                      {user && user ? (
-                        <Alert color="success">
-                          Register User Successfully
-                        </Alert>
-                      ) : null}
+                      {successMessage && <Alert color="success">{successMessage}</Alert>}
+                      {apiError && <Alert color="danger">{apiError}</Alert>}
 
-                      {registrationError && registrationError ? (
-                        <Alert color="danger">{registrationError}</Alert>
-                      ) : null}
+                      <div className="mb-3">
+                        <Label className="form-label">First Name</Label>
+                        <Input
+                          id="firstName"
+                          name="firstName"
+                          type="text"
+                          placeholder="Enter first name"
+                          onChange={validation.handleChange}
+                          onBlur={validation.handleBlur}
+                          value={validation.values.firstName}
+                          invalid={validation.touched.firstName && validation.errors.firstName}
+                        />
+                        {validation.touched.firstName && validation.errors.firstName && (
+                          <FormFeedback>{validation.errors.firstName}</FormFeedback>
+                        )}
+                      </div>
+
+                      <div className="mb-3">
+                        <Label className="form-label">Middle Name</Label>
+                        <Input
+                          id="middleName"
+                          name="middleName"
+                          type="text"
+                          placeholder="Enter middle name"
+                          onChange={validation.handleChange}
+                          onBlur={validation.handleBlur}
+                          value={validation.values.middleName}
+                          invalid={validation.touched.middleName && validation.errors.middleName}
+                        />
+                        {validation.touched.middleName && validation.errors.middleName && (
+                          <FormFeedback>{validation.errors.middleName}</FormFeedback>
+                        )}
+                      </div>
+
+                      <div className="mb-3">
+                        <Label className="form-label">Last Name</Label>
+                        <Input
+                          id="lastName"
+                          name="lastName"
+                          type="text"
+                          placeholder="Enter last name"
+                          onChange={validation.handleChange}
+                          onBlur={validation.handleBlur}
+                          value={validation.values.lastName}
+                          invalid={validation.touched.lastName && validation.errors.lastName}
+                        />
+                        {validation.touched.lastName && validation.errors.lastName && (
+                          <FormFeedback>{validation.errors.lastName}</FormFeedback>
+                        )}
+                      </div>
 
                       <div className="mb-3">
                         <Label className="form-label">Email</Label>
                         <Input
                           id="email"
                           name="email"
-                          className="form-control"
-                          placeholder="Enter email"
                           type="email"
+                          placeholder="Enter email"
                           onChange={validation.handleChange}
                           onBlur={validation.handleBlur}
-                          value={validation.values.email || ""}
-                          invalid={
-                            validation.touched.email && validation.errors.email ? true : false
-                          }
+                          value={validation.values.email}
+                          invalid={validation.touched.email && validation.errors.email}
                         />
-                        {validation.touched.email && validation.errors.email ? (
-                          <FormFeedback type="invalid">{validation.errors.email}</FormFeedback>
-                        ) : null}
+                        {validation.touched.email && validation.errors.email && (
+                          <FormFeedback>{validation.errors.email}</FormFeedback>
+                        )}
                       </div>
 
                       <div className="mb-3">
-                        <Label className="form-label">Username</Label>
+                        <Label className="form-label">Mobile</Label>
                         <Input
-                          name="username"
+                          id="mobile"
+                          name="mobile"
                           type="text"
-                          placeholder="Enter username"
+                          placeholder="Enter mobile number"
                           onChange={validation.handleChange}
                           onBlur={validation.handleBlur}
-                          value={validation.values.username || ""}
-                          invalid={
-                            validation.touched.username && validation.errors.username ? true : false
-                          }
+                          value={validation.values.mobile}
+                          invalid={validation.touched.mobile && validation.errors.mobile}
                         />
-                        {validation.touched.username && validation.errors.username ? (
-                          <FormFeedback type="invalid">{validation.errors.username}</FormFeedback>
-                        ) : null}
+                        {validation.touched.mobile && validation.errors.mobile && (
+                          <FormFeedback>{validation.errors.mobile}</FormFeedback>
+                        )}
                       </div>
+
                       <div className="mb-3">
                         <Label className="form-label">Password</Label>
                         <Input
+                          id="password"
                           name="password"
                           type="password"
-                          placeholder="Enter Password"
+                          placeholder="Enter password"
                           onChange={validation.handleChange}
                           onBlur={validation.handleBlur}
-                          value={validation.values.password || ""}
-                          invalid={
-                            validation.touched.password && validation.errors.password ? true : false
-                          }
+                          value={validation.values.password}
+                          invalid={validation.touched.password && validation.errors.password}
                         />
-                        {validation.touched.password && validation.errors.password ? (
-                          <FormFeedback type="invalid">{validation.errors.password}</FormFeedback>
-                        ) : null}
+                        {validation.touched.password && validation.errors.password && (
+                          <FormFeedback>{validation.errors.password}</FormFeedback>
+                        )}
                       </div>
 
                       <div className="mt-4">
-                        <button
-                          className="btn btn-primary btn-block "
-                          type="submit"
-                        >
+                        <button className="btn btn-primary btn-block" type="submit">
                           Register
                         </button>
-                      </div>
-
-                      <div className="mt-4 text-center">
-                        <p className="mb-0">
-                          By registering you agree to the Skote{" "}
-                          <Link to="#" className="text-primary">
-                            Terms of Use
-                          </Link>
-                        </p>
                       </div>
                     </Form>
                   </div>
@@ -208,15 +204,14 @@ useEffect(() => {
               </Card>
               <div className="mt-5 text-center">
                 <p>
-                  Already have an account ?{" "}
+                  Already have an account?{" "}
                   <Link to="/login" className="font-weight-medium text-primary">
-                    {" "}
                     Login
-                  </Link>{" "}
+                  </Link>
                 </p>
                 <p>
-                  © {new Date().getFullYear()} Skote. Crafted with{" "}
-                  <i className="mdi mdi-heart text-danger" /> by Themesbrand
+                  © {new Date().getFullYear()} GC. Crafted with <i className="mdi mdi-heart text-danger" /> by Game
+                  Connect
                 </p>
               </div>
             </Col>

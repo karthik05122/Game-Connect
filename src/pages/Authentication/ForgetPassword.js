@@ -73,7 +73,7 @@ const ForgetPasswordPage = props => {
                     <Col xs={7}>
                       <div className="text-primary p-4">
                         <h5 className="text-primary">Welcome Back !</h5>
-                        <p>Sign in to continue to Skote.</p>
+                        <p>Sign in to continue to Game Connect.</p>
                       </div>
                     </Col>
                     <Col className="col-5 align-self-end">
@@ -157,7 +157,7 @@ const ForgetPasswordPage = props => {
                 </p>
                 <p>
                   © {new Date().getFullYear()} Skote. Crafted with{" "}
-                  <i className="mdi mdi-heart text-danger" /> by Themesbrand
+                  <i className="mdi mdi-heart text-danger" /> by Game Connect
                 </p>
               </div>
             </Col>

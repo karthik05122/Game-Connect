@@ -18,7 +18,7 @@ const Login = () => {
   const [show, setShow] = useState(false);
 
   //meta title
-  document.title = "Login | Skote - React Admin & Dashboard Template";
+  document.title = "Login | Game Connect";
 
   // Form validation 
   const validation = useFormik({
@@ -209,7 +209,7 @@ const Login = () => {
                 </p>
                 <p>
                   © {new Date().getFullYear()} Skote. Crafted with{" "}
-                  <i className="mdi mdi-heart text-danger" /> by Themesbrand
+                  <i className="mdi mdi-heart text-danger" /> by Game Connect
                 </p>
               </div>
             </Col>

@@ -25,7 +25,7 @@ const DetailsSection = ({ tournament }) => {
     const handleStartTournament = async () => {
         try {
             const response = await fetch(
-                `https://thingproxy.freeboard.io/fetch/https://api.challonge.com/v1/tournaments/${tournament.id}/start.json?api_key=sBjIu7L8vcj2owFPrttbLlpN4zlXyvgVBzviXd6r`,
+                `https://api.allorigins.win/get?url=https://api.challonge.com/v1/tournaments/${tournament.id}/start.json?api_key=sBjIu7L8vcj2owFPrttbLlpN4zlXyvgVBzviXd6r`,
                 {
                     method: "POST",
                     headers: {
@@ -54,7 +54,7 @@ const DetailsSection = ({ tournament }) => {
     const handleSubmitParticipants = async () => {
         try {
             const response = await fetch(
-                `https://thingproxy.freeboard.io/fetch/https://api.challonge.com/v1/tournaments/${tournament.id}/participants/bulk_add.json?api_key=sBjIu7L8vcj2owFPrttbLlpN4zlXyvgVBzviXd6r`,
+                `https://api.allorigins.win/get?url=https://api.challonge.com/v1/tournaments/${tournament.id}/participants/bulk_add.json?api_key=sBjIu7L8vcj2owFPrttbLlpN4zlXyvgVBzviXd6r`,
                 {
                     method: "POST",
                     headers: {

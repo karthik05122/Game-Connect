@@ -137,7 +137,7 @@ const TwostepVerification = () => {
                 </p>
                 <p>
                   © {new Date().getFullYear()} Skote. Crafted with{" "}
-                  <i className="mdi mdi-heart text-danger"></i> by Themesbrand
+                  <i className="mdi mdi-heart text-danger"></i> by Game Connect
                 </p>
               </div>
             </Col>

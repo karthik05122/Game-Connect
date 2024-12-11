@@ -64,13 +64,13 @@ const CreateTournament = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`https://thingproxy.freeboard.io/fetch/https://api.challonge.com/v1/tournaments.json?api_key=${API_KEY}`, {
+      const response = await fetch(`https://api.challonge.com/v1/tournaments.json?api_key=${API_KEY}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          tournament: tournamentData,
+          tournament: tournamentData, // Wrap the data inside a `tournament` key
         }),
       });
 
@@ -81,7 +81,8 @@ const CreateTournament = () => {
           navigate(`/tournaments`);
         }, 2000);
       } else {
-        alert("Failed to create tournament.");
+        const errorData = await response.json();
+        alert(`Failed to create tournament: ${errorData.errors.join(", ")}`);
       }
     } catch (error) {
       console.error("Error creating tournament:", error);

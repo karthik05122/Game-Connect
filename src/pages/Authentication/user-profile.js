@@ -12,98 +12,54 @@ import {
   FormFeedback,
   Form,
 } from "reactstrap";
-
-// Formik Validation
 import * as Yup from "yup";
 import { useFormik } from "formik";
-
-//redux
-import { useSelector, useDispatch } from "react-redux";
-import { createSelector } from "reselect";
-import withRouter from "components/Common/withRouter";
-
-//Import Breadcrumb
-import Breadcrumb from "../../components/Common/Breadcrumb";
-
 import avatar from "../../assets/images/users/avatar-1.jpg";
-// actions
-import { editProfile, resetProfileFlag } from "../../store/actions";
 
 const UserProfile = () => {
-
-  //meta title
+  // Meta title
   document.title = "Profile | Skote - React Admin & Dashboard Template";
 
-  const dispatch = useDispatch();
-
-  const [email, setemail] = useState("");
-  const [name, setname] = useState("");
-  const [idx, setidx] = useState(1);
-
-  const selectProfileState = (state) => state.Profile;
-    const ProfileProperties = createSelector(
-      selectProfileState,
-        (profile) => ({
-          error: profile.error,
-          success: profile.success,
-        })
-    );
-
-    const {
-      error,
-      success
-  } = useSelector(ProfileProperties);
-
-  useEffect(() => {
-    if (localStorage.getItem("authUser")) {
-      const obj = JSON.parse(localStorage.getItem("authUser"));
-      if (process.env.REACT_APP_DEFAULTAUTH === "firebase") {
-        setname(obj.displayName);
-        setemail(obj.email);
-        setidx(obj.uid);
-      } else if (
-        process.env.REACT_APP_DEFAULTAUTH === "fake" ||
-        process.env.REACT_APP_DEFAULTAUTH === "jwt"
-      ) {
-        setname(obj.username);
-        setemail(obj.email);
-        setidx(obj.uid);
-      }
-      setTimeout(() => {
-        dispatch(resetProfileFlag());
-      }, 3000);
-    }
-  }, [dispatch, success]);
-
-  const validation = useFormik({
-    // enableReinitialize : use this flag when initial values needs to be changed
-    enableReinitialize: true,
-
-    initialValues: {
-      username: name || '',
-      idx: idx || '',
-    },
-    validationSchema: Yup.object({
-      username: Yup.string().required("Please Enter Your UserName"),
-    }),
-    onSubmit: (values) => {
-      dispatch(editProfile(values));
-    }
+  // State for user information
+  const [userData, setUserData] = useState({
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    email: "",
+    mobile: "",
+    roles: [],
   });
 
+  // Load user data from localStorage
+  useEffect(() => {
+    const storedUser = localStorage.getItem("authUser");
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+      setUserData(parsedUser.data);
+    }
+  }, []);
+
+  // Form validation using Formik
+  const validation = useFormik({
+    enableReinitialize: true,
+    initialValues: {
+      username: `${userData.firstName} ${userData.lastName}`,
+    },
+    validationSchema: Yup.object({
+      username: Yup.string().required("Please Enter Your User Name"),
+    }),
+    onSubmit: (values) => {
+      // Perform API request or logic to update username
+      alert("User Name Updated: " + values.username);
+    },
+  });
 
   return (
     <React.Fragment>
       <div className="page-content">
         <Container fluid>
-          {/* Render Breadcrumb */}
-          <Breadcrumb title="Skote" breadcrumbItem="Profile" />
-
           <Row>
             <Col lg="12">
-              {error && error ? <Alert color="danger">{error}</Alert> : null}
-              {success ? <Alert color="success">{success}</Alert> : null}
-
               <Card>
                 <CardBody>
                   <div className="d-flex">
@@ -116,9 +72,14 @@ const UserProfile = () => {
                     </div>
                     <div className="flex-grow-1 align-self-center">
                       <div className="text-muted">
-                        <h5>{name}</h5>
-                        <p className="mb-1">{email}</p>
-                        <p className="mb-0">Id no: #{idx}</p>
+                        <h5>
+                          {userData.firstName} {userData.middleName} {userData.lastName}
+                        </h5>
+                        <p className="mb-1">{userData.email}</p>
+                        <p className="mb-1">Mobile: {userData.mobile}</p>
+                        <p className="mb-0">
+                          Role: {userData.roles.length > 0 ? userData.roles[0].roleName : "N/A"}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -143,7 +104,6 @@ const UserProfile = () => {
                   <Label className="form-label">User Name</Label>
                   <Input
                     name="username"
-                    // value={name}
                     className="form-control"
                     placeholder="Enter User Name"
                     type="text"
@@ -157,7 +117,6 @@ const UserProfile = () => {
                   {validation.touched.username && validation.errors.username ? (
                     <FormFeedback type="invalid">{validation.errors.username}</FormFeedback>
                   ) : null}
-                  <Input name="idx" value={idx} type="hidden" />
                 </div>
                 <div className="text-center mt-4">
                   <Button type="submit" color="danger">
@@ -173,4 +132,4 @@ const UserProfile = () => {
   );
 };
 
-export default withRouter(UserProfile);
+export default UserProfile;

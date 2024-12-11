@@ -62,7 +62,7 @@ const Leaderboard = () => {
                         <Col xs="12">
                             <Card>
                                 <CardBody>
-                                    <h4 className="mb-4">Top Chess Players (Daily)</h4>
+                                    <h4 className="mb-4">Top Players (Daily)</h4>
                                     <Table className="table align-middle table-nowrap">
                                         <thead>
                                             <tr>

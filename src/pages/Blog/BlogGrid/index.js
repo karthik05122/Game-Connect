@@ -23,9 +23,10 @@ const BlogGrid = () => {
   // Fetch player counts
   const fetchPlayerCount = async (appid) => {
     try {
-      const response = await fetch(`https://thingproxy.freeboard.io/fetch/http://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1?appid=${appid}&key=${API_KEY}`);
+      const response = await fetch(`https://api.allorigins.win/get?url=http://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1?appid=${appid}&key=${API_KEY}`);
       const data = await response.json();
-      return data.response.player_count || 0;
+      const parsedContent = JSON.parse(data.contents);
+      return parsedContent.response.player_count || 0;
     } catch (error) {
       console.error("Error fetching player count:", error);
       return 0;
@@ -35,15 +36,18 @@ const BlogGrid = () => {
   // Fetch player counts for all games
   useEffect(() => {
     const fetchAllPlayerCounts = async () => {
-      const gameAppIds = [570, 730, 578080, 1203220, 440, 1172470, 2923300, 2429640]; // App IDs of games
+      const gameAppIds = [570, 730, 578080, 1203220, 440, 1172470, 2923300, 2429640];
       const counts = {};
-      for (const appid of gameAppIds) {
-        const count = await fetchPlayerCount(appid);
-        counts[appid] = count;
-      }
+      await Promise.all(
+        gameAppIds.map(async (appid) => {
+          const count = await fetchPlayerCount(appid);
+          counts[appid] = count;
+        })
+      );
+      
       setPlayerCounts(counts);
     };
-
+  
     fetchAllPlayerCounts();
   }, []);
 

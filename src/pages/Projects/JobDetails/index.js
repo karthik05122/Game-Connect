@@ -20,7 +20,7 @@ const TournamentDetails = () => {
         const fetchTournamentData = async () => {
             try {
                 const response = await fetch(
-                    `https://thingproxy.freeboard.io/fetch/https://api.challonge.com/v1/tournaments/${tournamentId}.json?api_key=sBjIu7L8vcj2owFPrttbLlpN4zlXyvgVBzviXd6r`,
+                    `https://api.allorigins.win/get?url=https://api.challonge.com/v1/tournaments/${tournamentId}.json?api_key=sBjIu7L8vcj2owFPrttbLlpN4zlXyvgVBzviXd6r`,
                     {
                         headers: {
                             "Content-Type": "application/json",
@@ -29,7 +29,8 @@ const TournamentDetails = () => {
                 );
                 if (response.ok) {
                     const data = await response.json();
-                    setTournament(data.tournament);
+                    const parsedData = JSON.parse(data.contents);
+                    setTournament(parsedData.tournament);
                 } else {
                     console.error("Failed to fetch tournament details.");
                 }
@@ -48,7 +49,7 @@ const TournamentDetails = () => {
         const fetchParticipants = async () => {
             try {
                 const response = await fetch(
-                    `https://thingproxy.freeboard.io/fetch/https://api.challonge.com/v1/tournaments/${tournamentId}/participants.json?api_key=sBjIu7L8vcj2owFPrttbLlpN4zlXyvgVBzviXd6r`,
+                    `https://api.allorigins.win/get?url=https://api.challonge.com/v1/tournaments/${tournamentId}/participants.json?api_key=sBjIu7L8vcj2owFPrttbLlpN4zlXyvgVBzviXd6r`,
                     {
                         headers: {
                             "Content-Type": "application/json",
@@ -57,7 +58,9 @@ const TournamentDetails = () => {
                 );
                 if (response.ok) {
                     const data = await response.json();
-                    setParticipants(data.map(participant => participant.participant));
+                    const parsedData = JSON.parse(data.contents);
+                    const participantsList = parsedData.map((item) => item.participant);
+                    setParticipants(participantsList);
                 } else {
                     console.error("Failed to fetch participants.");
                 }

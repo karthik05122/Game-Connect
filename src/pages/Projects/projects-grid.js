@@ -16,7 +16,7 @@ const ProjectsGrid = (props) => {
     const fetchTournaments = async () => {
       try {
         const response = await fetch(
-          "https://thingproxy.freeboard.io/fetch/https://api.challonge.com/v1/tournaments.json?api_key=sBjIu7L8vcj2owFPrttbLlpN4zlXyvgVBzviXd6r&state=all",
+          "https://api.allorigins.win/get?url=https://api.challonge.com/v1/tournaments.json?api_key=sBjIu7L8vcj2owFPrttbLlpN4zlXyvgVBzviXd6r&state=all",
           {
             headers: {
               "Content-Type": "application/json",
@@ -25,7 +25,9 @@ const ProjectsGrid = (props) => {
         );
         if (response.ok) {
           const data = await response.json();
-          setTournaments(data.map((item) => item.tournament));
+          const parsedData = JSON.parse(data.contents);
+          const tournamentsList = parsedData.map((item) => item.tournament);
+          setTournaments(tournamentsList);
         } else {
           console.error("Failed to fetch tournaments.");
         }
@@ -40,7 +42,7 @@ const ProjectsGrid = (props) => {
   const handleDelete = async (id) => {
     try {
       const response = await fetch(
-        `https://thingproxy.freeboard.io/fetch/https://api.challonge.com/v1/tournaments/${id}.json?api_key=sBjIu7L8vcj2owFPrttbLlpN4zlXyvgVBzviXd6r`,
+        `https://api.allorigins.win/get?url=https://api.challonge.com/v1/tournaments/${id}.json?api_key=sBjIu7L8vcj2owFPrttbLlpN4zlXyvgVBzviXd6r`,
         {
           method: "DELETE",
           headers: {
